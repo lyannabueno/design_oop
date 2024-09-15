@@ -6,41 +6,41 @@ public class VehicleData {
 
     public static void main(String[] args) {
         ReturnVehicleData vehicle = new ReturnVehicleData();
-        // variável que faz referência ao objeto anterior = nova instância e seu método construtor
-        String placa;
-        int ano;
-        float preco;
+        // variable referencing the previous object = new instance and its constructor method
+        String licensePlate;
+        int year;
+        float price;
         
-        Scanner entrada = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         
         do {    
-            System.out.print("Digite a placa do seu carro: ");
-            placa = entrada.next();
+            System.out.print("Enter your car's license plate: ");
+            licensePlate = input.next();
             
-            if (placa.length() != 7) {
-                System.out.println("\nQuantidade de caracteres inválidos!\n\nTente novamente!\n");
+            if (licensePlate.length() != 7) {
+                System.out.println("\nInvalid number of characters!\n\nPlease try again!\n");
             }
             
-        } while(placa.length() > 7);
+        } while(licensePlate.length() > 7);
         
-        vehicle.alterarPlaca(placa.toUpperCase());
+        vehicle.setLicensePlate(licensePlate.toUpperCase());
         
         do {
-            System.out.print("Digite o ano do seu carro: ");
-            ano = entrada.nextInt();
+            System.out.print("Enter your car's year: ");
+            year = input.nextInt();
             
-            if (String.valueOf(ano).length() != 4) {
-                System.out.println("\nO ano deve ter 4 dígitos!\n");
+            if (String.valueOf(year).length() != 4) {
+                System.out.println("\nThe year must have 4 digits!\n");
             }
-        } while(String.valueOf(ano).length() != 4);
+        } while(String.valueOf(year).length() != 4);
         
-        vehicle.alterarAno(ano);
+        vehicle.setYear(year);
         
-        System.out.print("Digite o preço do seu carro: ");
-        preco = entrada.nextFloat();
-        vehicle.alterarPreco(preco);
+        System.out.print("Enter your car's price: ");
+        price = input.nextFloat();
+        vehicle.setPrice(price);
         
-        System.out.println("\nAs informações sobre seu carro são:\n\nPLACA: "+vehicle.obterPlaca()+" | ANO: "+vehicle.obterAno()+" | PREÇO: "+vehicle.obterPreco()+"\n");
+        System.out.println("\nThe information about your car is:\n\nLICENSE PLATE: "+vehicle.getLicensePlate()+" | YEAR: "+vehicle.getYear()+" | PRICE: "+vehicle.getPrice()+"\n");
     }
     
 }

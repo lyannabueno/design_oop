@@ -1,31 +1,33 @@
 package vehicledata;
 
 public class ReturnVehicleData {
-    private String placa;
-    private int ano;
-    private float preco;
+    private String licensePlate;
+    private int year;
+    private float price;
     
-    public String obterPlaca() {
-        return placa;
+    public String getLicensePlate() {
+        return licensePlate;
     }
     
-    public int obterAno() {
-        return ano;
+    public int getYear() {
+        return year;
     }
     
-    public float obterPreco() {
-        return preco;
+    public float getPrice() {
+        return price;
     }
     
-    public void alterarPlaca(String placa) {
-        this.placa = placa;
+    // class with a 'void' method does not return any value
+    
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
     }
     
-    public void alterarAno(int ano) {
-        this.ano = ano;
+    public void setYear(int year) {
+        this.year = year;
     }
     
-    public void alterarPreco(float preco) {
-        this.preco = preco;
+    public void setPrice(float price) {
+        this.price = price;
     }
 }
