@@ -7,29 +7,31 @@ public class Exceptions {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
-        int numero1;
-        int numero2;
-        int resultado;
-        boolean continua = true;
+        int number1;
+        int number2;
+        int result;
+        boolean keepGoing = true;
         
-        do{
+        // when an exception is not caught with a try...catch block, it is caught by the JVM
+        
+        do {
             try {
-                System.out.print("Digite o primeiro numero: ");
-                numero1 = scanner.nextInt();
-                System.out.print("Digite o segundo numero: ");
-                numero2 = scanner.nextInt();
-                resultado = numero1 / numero2;
-                System.out.println("Resultado: " + resultado);
-                continua = false;
-            } catch (InputMismatchException excecao) {
-                System.err.println(excecao.getMessage()); // mensagem de erro técnica
-                scanner.nextLine(); // limpa a entrada inválida do scanner e permitir que o usuário insira outro valor corretamente
-                System.out.println("Informe apenas numeros inteiros"); // mensagem de erro amigável
-            } catch (ArithmeticException excecao) {
-                System.err.println(excecao.getMessage());
-                System.out.println("Zero não é um denominador válido");
+                System.out.print("Enter the first number: ");
+                number1 = scanner.nextInt();
+                System.out.print("Enter the second number: ");
+                number2 = scanner.nextInt();
+                result = number1 / number2;
+                System.out.println("Result: " + result);
+                keepGoing = false;
+            } catch (InputMismatchException exception) {
+                System.err.println(exception.getMessage()); // technical error message
+                scanner.nextLine(); // clears the invalid input from the scanner and allows the user to enter a valid value
+                System.out.println("Please enter only integer numbers"); // user-friendly error message
+            } catch (ArithmeticException exception) {
+                System.err.println(exception.getMessage());
+                System.out.println("Zero is not a valid denominator");
             }
-        } while (continua);
+        } while (keepGoing);
     }
     
 }
