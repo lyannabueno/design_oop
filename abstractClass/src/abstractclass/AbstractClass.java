@@ -6,19 +6,19 @@ public class AbstractClass {
 
     public static void main(String[] args) {
         GeometricFigure figure1 = new Circle(5.00);
-        System.out.println("A área do círculo é de " + figure1.getArea());
-        System.out.println("O perímetro do círculo é de " + figure1.getPerimeter());
+        System.out.println("The area of the circle is " + figure1.getArea());
+        System.out.println("The perimeter of the circle is " + figure1.getPerimeter());
 
         GeometricFigure figure2 = new Rectangle(5.00, 10.00);
-        System.out.println("A área do retângulo é de " + figure2.getArea());
-        System.out.println("O perímetro do retângulo é de " + figure2.getPerimeter());
-        
+        System.out.println("The area of the rectangle is " + figure2.getArea());
+        System.out.println("The perimeter of the rectangle is " + figure2.getPerimeter());
+
         GeometricFigure figure3 = new Trapeze(5.00, 10.00, 15.00, 20.00, 25.00);
-        System.out.println("A área do trapézio é de " + figure3.getArea());
-        System.out.println("O perímetro do trapézio é de " + figure3.getPerimeter());
-        
+        System.out.println("The area of the trapezoid is " + figure3.getArea());
+        System.out.println("The perimeter of the trapezoid is " + figure3.getPerimeter());
+
         GeometricFigure figure4 = new Triangle(5.00, 10.00, 15.00, 20.00);
-        System.out.println("A área do triângulo é de " + figure4.getArea());
-        System.out.println("O perímetro do triângulo é de " + figure4.getPerimeter());
+        System.out.println("The area of the triangle is " + figure4.getArea());
+        System.out.println("The perimeter of the triangle is " + figure4.getPerimeter());
     }
 }

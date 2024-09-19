@@ -1,20 +1,20 @@
 package abstractclass;
 
 public class Triangle extends GeometricFigure {
-    private double base, altura, lado_esquerdo, lado_direito;
-    
-    public Triangle(double base, double altura, double lado_esquerdo, double lado_direito) {
+    private double base, height, leftSide, rightSide;
+
+    public Triangle(double base, double height, double leftSide, double rightSide) {
         this.base = base;
-        this.altura = altura;
-        this.lado_direito = lado_direito;
-        this.lado_esquerdo = lado_esquerdo;
+        this.height = height;
+        this.rightSide = rightSide;
+        this.leftSide = leftSide;
     }
-    
+
     public double getArea() {
-        return (base * altura) / 2;
+        return (base * height) / 2;
     }
-    
+
     public double getPerimeter() {
-        return base + lado_direito + lado_esquerdo;
-    } 
+        return base + rightSide + leftSide;
+    }
 }
