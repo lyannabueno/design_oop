@@ -7,5 +7,4 @@ public class SuppliersAndClients {
         janela.setLocationRelativeTo(null);
         janela.setVisible(true);
     }
-    
 }
