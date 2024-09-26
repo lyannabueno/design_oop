@@ -1,6 +1,6 @@
 package mercadolivre.entidade;
 
-public class pessoa {
+public class Pessoa {
     private int id;
     private String nome;
     

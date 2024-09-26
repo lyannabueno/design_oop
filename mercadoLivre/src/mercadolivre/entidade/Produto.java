@@ -9,6 +9,6 @@ package mercadolivre.entidade;
  *
  * @author 06006399
  */
-public class itemVenda {
+public class Produto {
     
 }

@@ -3,10 +3,12 @@ package mercadolivre.entidade;
 import java.sql.Time;
 import java.util.Date;
 
-public class venda {
+public class Venda {
     private int id, idCliente;
     private Date data;
     private Time hora;
+    private Cliente cliente;
+    private ItemVenda itemVenda;
     
     public int obterId() {
         return id;
@@ -16,6 +18,7 @@ public class venda {
         this.id = id;
     }
     
+    
     public Time obterHora() {
         return hora;
     }
@@ -23,6 +26,7 @@ public class venda {
     public void alterarHora(Time hora) {
         this.hora = hora;
     }
+    
     
     public Date obterData() {
         return data;
@@ -32,11 +36,23 @@ public class venda {
         this.data = data;
     }
     
+    
     public int idCliente() {
         return idCliente;
     }
     
-    public void alterarCliente(Date data) {
-        this.data = data;
+    
+    public Cliente obterCliente() {
+        return cliente;
     }
+    
+    public void alterarCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    
+    
+    public void incluirItem(ItemVenda itemVenda) {
+        this.itemVenda = itemVenda;
+    }
+    
 }

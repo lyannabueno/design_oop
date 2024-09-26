@@ -1,6 +1,6 @@
 package mercadolivre.entidade;
 
-public class cliente extends pessoa{
+public class Cliente extends Pessoa{
     private String cpf;
     
     public String obterCpf() {
