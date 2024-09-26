@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mercadolivre.entidade;
 
-/**
- *
- * @author 06006399
- */
-public class cliente {
+public class cliente extends pessoa{
+    private String cpf;
     
+    public String obterCpf() {
+        return cpf;
+    }
+    
+    public void alterarCpf(String cpf) {
+        this.cpf = cpf;
+    }
 }

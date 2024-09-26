@@ -1,14 +1,42 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mercadolivre.entidade;
 
-/**
- *
- * @author 06006399
- */
+import java.sql.Time;
+import java.util.Date;
+
 public class venda {
+    private int id, idCliente;
+    private Date data;
+    private Time hora;
     
+    public int obterId() {
+        return id;
+    }
+    
+    public void alterarId(int id) {
+        this.id = id;
+    }
+    
+    public Time obterHora() {
+        return hora;
+    }
+    
+    public void alterarHora(Time hora) {
+        this.hora = hora;
+    }
+    
+    public Date obterData() {
+        return data;
+    }
+    
+    public void alterarData(Date data) {
+        this.data = data;
+    }
+    
+    public int idCliente() {
+        return idCliente;
+    }
+    
+    public void alterarCliente(Date data) {
+        this.data = data;
+    }
 }
