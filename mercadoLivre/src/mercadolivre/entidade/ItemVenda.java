@@ -1,7 +1,7 @@
 package mercadolivre.entidade;
 
 public class ItemVenda {
-    private int numero, idProduto, quantidade;
+    private int numero, idProduto, quantidadeEstoque;
     private float preco, total;
     private Produto produto;
     
@@ -20,11 +20,11 @@ public class ItemVenda {
     
     
     public int obterQuantidade() {
-        return quantidade;
+        return quantidadeEstoque;
     }
     
-    public void alterarQuantidade(int quantidade) {
-        this.quantidade = quantidade;
+    public void alterarQuantidade(int quantidadeEstoque) {
+        this.quantidadeEstoque = quantidadeEstoque;
     }
     
     
@@ -46,6 +46,7 @@ public class ItemVenda {
         return produto;
     }
     
-    public void alterarProduto() {
-        
+    public void alterarProduto(Produto produto) {
+        this.produto = produto;
+    }
 }
