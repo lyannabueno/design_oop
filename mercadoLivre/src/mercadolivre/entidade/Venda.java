@@ -37,7 +37,7 @@ public class Venda {
     }
     
     
-    public int idCliente() {
+    public int obteridCliente() {
         return idCliente;
     }
     
