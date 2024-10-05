@@ -22,7 +22,7 @@ public class ActionClientsButton {
     }
     
     
-    public void setTelefome(int telefone) {
+    public void setTelefone(int telefone) {
         this.telefone = telefone;
     }
     
