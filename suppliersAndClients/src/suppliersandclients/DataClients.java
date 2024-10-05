@@ -20,7 +20,7 @@ public class DataClients extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
         inputNome = new javax.swing.JTextField();
         inputTelefone = new javax.swing.JTextField();
         inputEmail = new javax.swing.JTextField();
@@ -28,13 +28,18 @@ public class DataClients extends javax.swing.JDialog {
         inputCPF = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        okButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel4.setText("CPF:");
 
-        jButton2.setText("CANCELAR");
+        cancelButton.setText("CANCELAR");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
 
         inputNome.setEditable(false);
 
@@ -50,7 +55,12 @@ public class DataClients extends javax.swing.JDialog {
 
         jLabel3.setText("Email:");
 
-        jButton1.setText("OK");
+        okButton.setText("OK");
+        okButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,9 +92,9 @@ public class DataClients extends javax.swing.JDialog {
                                 .addGap(2, 2, 2))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(109, 109, 109)
-                        .addComponent(jButton1)
+                        .addComponent(okButton)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)))
+                        .addComponent(cancelButton)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -108,13 +118,21 @@ public class DataClients extends javax.swing.JDialog {
                     .addComponent(jLabel4))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(okButton)
+                    .addComponent(cancelButton))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_okButtonActionPerformed
 
     public static void main(String args[]) {
 
@@ -150,15 +168,15 @@ public class DataClients extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelButton;
     private javax.swing.JTextField inputCPF;
     private javax.swing.JTextField inputEmail;
     private javax.swing.JTextField inputNome;
     private javax.swing.JTextField inputTelefone;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton okButton;
     // End of variables declaration//GEN-END:variables
 }
