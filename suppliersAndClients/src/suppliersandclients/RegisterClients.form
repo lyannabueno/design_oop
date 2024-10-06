@@ -198,19 +198,10 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="inputEmail">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputEmailActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="inputCPF">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputCPFActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="inputTelefone">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputTelefoneActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -228,9 +219,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="inputNome">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputNomeActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>
