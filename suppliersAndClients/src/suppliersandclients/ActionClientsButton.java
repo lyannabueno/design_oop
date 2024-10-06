@@ -1,8 +1,8 @@
 package suppliersandclients;
 
 public class ActionClientsButton {
-    protected String nome, email;
-    protected int telefone, cpf;
+    protected String nome, email, telefone;
+    private String cpf;
     
     public void setNome(String nome) {
         this.nome = nome;
@@ -22,20 +22,20 @@ public class ActionClientsButton {
     }
     
     
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
     
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
     
     
-    public void setCPF(int cpf) {
+    public void setCPF(String cpf) {
         this.cpf = cpf;
     }
     
-    public int getCPF() {
+    public String getCPF() {
         return cpf;
     }
 }
