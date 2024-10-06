@@ -11,8 +11,8 @@ public class DataClients extends javax.swing.JDialog {
     public void exportarComponentes(ActionClientsButton actionClientsButton) {
         inputNome.setText(actionClientsButton.getNome());
         inputEmail.setText(actionClientsButton.getEmail());
-        inputTelefone.setText(String.valueOf(actionClientsButton.getTelefone()));
-        inputCPF.setText(String.valueOf(actionClientsButton.getCPF()));
+        inputTelefone.setText(actionClientsButton.getTelefone());
+        inputCPF.setText(actionClientsButton.getCPF());
     }
 
     @SuppressWarnings("unchecked")
