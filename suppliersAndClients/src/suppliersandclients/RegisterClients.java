@@ -205,7 +205,6 @@ public class RegisterClients extends javax.swing.JFrame {
                 Object[] dados = {inputNome.getText(), inputEmail.getText(), telefoneFormatado, cpfFormatado};
                 tableClients.addRow(dados);
 
-                // Limpar os campos de entrada
                 inputNome.setText("");
                 inputEmail.setText("");
                 inputTelefone.setText("");
@@ -267,11 +266,9 @@ public class RegisterClients extends javax.swing.JFrame {
             String telefone = inputTelefone.getText().replaceAll("[^0-9]", "");
             String cpf = inputCPF.getText().replaceAll("[^0-9]", "");
 
-            // Validar tamanho
             if (telefone.length() != 11 || cpf.length() != 11) {
                 JOptionPane.showMessageDialog(null, "Telefone ou CPF com tamanho inválido!");
             } else {
-                // Formatar apenas para exibição
                 telefone = DataFormatting.formatPhoneNumber(telefone);
                 cpf = DataFormatting.formatCPF(cpf);
 
@@ -290,7 +287,7 @@ public class RegisterClients extends javax.swing.JFrame {
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

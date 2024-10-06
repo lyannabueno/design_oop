@@ -1,5 +1,10 @@
 package suppliersandclients;
 
+import java.awt.Frame;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+
 public class RegisterSuppliers extends javax.swing.JFrame {
 
     public RegisterSuppliers() {
@@ -11,28 +16,28 @@ public class RegisterSuppliers extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        closeButton1 = new javax.swing.JButton();
+        table = new javax.swing.JTable();
+        closeButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        inputNome = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        editButton1 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
-        addButton1 = new javax.swing.JButton();
-        jTextField4 = new javax.swing.JTextField();
-        delButton1 = new javax.swing.JButton();
+        inputEmail = new javax.swing.JTextField();
+        editButton = new javax.swing.JButton();
+        inputCNPJ = new javax.swing.JTextField();
+        addButton = new javax.swing.JButton();
+        inputTelefone = new javax.swing.JTextField();
+        delButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        checkButton1 = new javax.swing.JButton();
+        checkButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        inputInscricaoMunicipal = new javax.swing.JTextField();
+        inputInscricaoEstadual = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -55,38 +60,53 @@ public class RegisterSuppliers extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(table);
 
-        closeButton1.setText("Fechar");
+        closeButton.setText("Fechar");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Telefone:");
 
         jLabel4.setText("CNPJ:");
 
-        editButton1.setText("Alterar");
-        editButton1.addActionListener(new java.awt.event.ActionListener() {
+        editButton.setText("Alterar");
+        editButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editButton1ActionPerformed(evt);
+                editButtonActionPerformed(evt);
             }
         });
 
-        addButton1.setText("Incluir");
-        addButton1.addActionListener(new java.awt.event.ActionListener() {
+        addButton.setText("Incluir");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButton1ActionPerformed(evt);
+                addButtonActionPerformed(evt);
             }
         });
 
-        delButton1.setText("Excluir");
-        delButton1.addActionListener(new java.awt.event.ActionListener() {
+        delButton.setText("Excluir");
+        delButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                delButton1ActionPerformed(evt);
+                delButtonActionPerformed(evt);
             }
         });
 
         jLabel1.setText("Nome:");
 
-        checkButton1.setText("Consultar");
+        checkButton.setText("Consultar");
+        checkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkButtonActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Email:");
 
@@ -103,43 +123,43 @@ public class RegisterSuppliers extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(addButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(56, 56, 56)
-                        .addComponent(editButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45)
-                        .addComponent(delButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(delButton, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(58, 58, 58)
-                        .addComponent(checkButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(53, 53, 53)
-                        .addComponent(closeButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(130, 130, 130))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1043, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(inputNome, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(inputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(inputTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(inputCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(inputInscricaoEstadual, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(inputInscricaoMunicipal, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(18, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -157,25 +177,25 @@ public class RegisterSuppliers extends javax.swing.JFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(inputNome, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(inputInscricaoMunicipal, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputInscricaoEstadual, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(delButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(closeButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(delButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
@@ -184,17 +204,140 @@ public class RegisterSuppliers extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void delButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_delButton1ActionPerformed
+    private void delButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delButtonActionPerformed
+        if (table.getSelectedRow() != -1) {
+            DefaultTableModel tableClients = (DefaultTableModel) table.getModel();
+            tableClients.removeRow((table.getSelectedRow()));
+            
+            inputNome.setText("");
+            inputEmail.setText("");
+            inputTelefone.setText("");
+            inputCNPJ.setText("");
+            inputInscricaoEstadual.setText("");
+            inputInscricaoMunicipal.setText("");
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um produto para excluir!");
+        }
+    }//GEN-LAST:event_delButtonActionPerformed
 
-    private void editButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editButton1ActionPerformed
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+        if (table.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Selecione um produto para alterar!");
+        } else if (inputNome.getText().isEmpty() || inputEmail.getText().isEmpty() || inputTelefone.getText().isEmpty() || inputCNPJ.getText().isEmpty() || inputInscricaoEstadual.getText().isEmpty() || inputInscricaoMunicipal.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos antes de alterá-los!");
+        } else {
+            String telefoneSemFormatacao = inputTelefone.getText().replaceAll("[^0-9]", "");
+            String cnpjSemFormatacao = inputCNPJ.getText().replaceAll("[^0-9]", "");
+            String inscricaoEstadualSemFormatacao = inputInscricaoEstadual.getText().replaceAll("[^0-9]", "");
+            String inscricaoMunicipalSemFormatacao = inputInscricaoMunicipal.getText().replaceAll("[^0-9]", "");
+            
+            if (telefoneSemFormatacao.length() != 11 || cnpjSemFormatacao.length() != 14 || inscricaoEstadualSemFormatacao.length() != 9 || inscricaoMunicipalSemFormatacao.length() != 8) {
+                JOptionPane.showMessageDialog(null, "Telefone, CNPJ, Inscrição Estadual ou Inscrição Municipal com tamanho inválido!");
+            } else {
+                String telefoneFormatado = DataFormatting.formatPhoneNumber(telefoneSemFormatacao);
+                String cnpjFormatado = DataFormatting.formatCNPJ(cnpjSemFormatacao);
+                String inscricaoEstadualFormatado = DataFormatting.formatInscricaoEstadual(inscricaoEstadualSemFormatacao);
+                String inscricaoMunicipalFormatado = DataFormatting.formatInscricaoMunicipal(inscricaoMunicipalSemFormatacao);
 
-    private void addButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addButton1ActionPerformed
+                table.setValueAt(inputNome.getText(), table.getSelectedRow(), 0);
+                table.setValueAt(inputEmail.getText(), table.getSelectedRow(), 1);
+                table.setValueAt(telefoneFormatado, table.getSelectedRow(), 2);
+                table.setValueAt(cnpjFormatado, table.getSelectedRow(), 3);
+                table.setValueAt(inscricaoEstadualFormatado, table.getSelectedRow(), 4);
+                table.setValueAt(inscricaoMunicipalFormatado, table.getSelectedRow(), 5);
+
+                inputNome.setText("");
+                inputEmail.setText("");
+                inputTelefone.setText("");
+                inputCNPJ.setText("");
+                inputInscricaoEstadual.setText("");
+                inputInscricaoMunicipal.setText("");
+            }
+        }
+    }//GEN-LAST:event_editButtonActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        if (inputNome.getText().isEmpty() || inputEmail.getText().isEmpty() || inputTelefone.getText().isEmpty() || inputCNPJ.getText().isEmpty() || inputInscricaoEstadual.getText().isEmpty() || inputInscricaoMunicipal.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos antes de cadastrá-los!");
+        } else {
+            String telefoneSemFormatacao = inputTelefone.getText().replaceAll("[^0-9]", "");
+            String cnpjSemFormatacao = inputCNPJ.getText().replaceAll("[^0-9]", "");
+            String inscricaoEstadualSemFormatacao = inputInscricaoEstadual.getText().replaceAll("[^0-9]", "");
+            String inscricaoMunicipalSemFormatacao = inputInscricaoMunicipal.getText().replaceAll("[^0-9]", "");
+            
+            if (telefoneSemFormatacao.length() != 11 || cnpjSemFormatacao.length() != 14 || inscricaoEstadualSemFormatacao.length() != 9 || inscricaoMunicipalSemFormatacao.length() != 8) {
+                JOptionPane.showMessageDialog(null, "Telefone, CNPJ, Inscrição Estadual ou Inscrição Municipal com tamanho inválido!");
+            } else {
+                String telefoneFormatado = DataFormatting.formatPhoneNumber(telefoneSemFormatacao);
+                String cnpjFormatado = DataFormatting.formatCNPJ(cnpjSemFormatacao);
+                String inscricaoEstadualFormatado = DataFormatting.formatInscricaoEstadual(inscricaoEstadualSemFormatacao);
+                String inscricaoMunicipalFormatado = DataFormatting.formatInscricaoMunicipal(inscricaoMunicipalSemFormatacao);
+
+                DefaultTableModel tableClients = (DefaultTableModel) table.getModel();
+                Object[] dados = {inputNome.getText(), inputEmail.getText(), telefoneFormatado, cnpjFormatado, inscricaoEstadualFormatado, inscricaoMunicipalFormatado};
+                tableClients.addRow(dados);
+
+                inputNome.setText("");
+                inputEmail.setText("");
+                inputTelefone.setText("");
+                inputCNPJ.setText("");
+                inputInscricaoEstadual.setText("");
+                inputInscricaoMunicipal.setText("");
+            }
+        }
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
+        if (table.getSelectedRow() != -1) {
+            Frame parent = (Frame) SwingUtilities.getWindowAncestor(table);
+            DataSuppliers dataSuppliers = new DataSuppliers(parent, true);
+
+            ActionSuppliersButton actionSuppliersButton = new ActionSuppliersButton();
+            actionSuppliersButton.setNome(inputNome.getText());
+            actionSuppliersButton.setEmail(inputEmail.getText());
+
+            String telefoneSemFormatacao = inputTelefone.getText().replaceAll("[^0-9]", "");
+            String cnpjSemFormatacao = inputCNPJ.getText().replaceAll("[^0-9]", "");
+            String inscricaoEstadualSemFormatacao = inputInscricaoEstadual.getText().replaceAll("[^0-9]", "");
+            String inscricaoMunicipalSemFormatacao = inputInscricaoMunicipal.getText().replaceAll("[^0-9]", "");
+            
+            if (telefoneSemFormatacao.length() != 11 || cnpjSemFormatacao.length() != 14 || inscricaoEstadualSemFormatacao.length() != 9 || inscricaoMunicipalSemFormatacao.length() != 8) {
+                JOptionPane.showMessageDialog(null, "Telefone ou CPF com tamanho inválido!");
+            } else {
+                String telefoneFormatado = DataFormatting.formatPhoneNumber(telefoneSemFormatacao);
+                String cnpjFormatado = DataFormatting.formatCNPJ(cnpjSemFormatacao);
+                String inscricaoEstadualFormatado = DataFormatting.formatInscricaoEstadual(inscricaoEstadualSemFormatacao);
+                String inscricaoMunicipalFormatado = DataFormatting.formatInscricaoMunicipal(inscricaoMunicipalSemFormatacao);
+
+                actionSuppliersButton.setTelefone(telefoneFormatado);
+                actionSuppliersButton.setCNPJ(cnpjFormatado);
+                actionSuppliersButton.setInscricaoEstadual(inscricaoEstadualFormatado);
+                actionSuppliersButton.setInscricaoMunicipal(inscricaoMunicipalFormatado);
+
+
+                dataSuppliers.setLocationRelativeTo(null);
+                dataSuppliers.exportarComponentes(actionSuppliersButton);
+                dataSuppliers.setVisible(true);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha na tabela para consultar.");
+        }
+    }//GEN-LAST:event_checkButtonActionPerformed
+
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_closeButtonActionPerformed
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        if (table.getSelectedRow() != -1) {
+            inputNome.setText(table.getValueAt(table.getSelectedRow(), 0).toString());
+            inputEmail.setText(table.getValueAt(table.getSelectedRow(), 1).toString());
+            inputTelefone.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
+            inputCNPJ.setText(table.getValueAt(table.getSelectedRow(), 3).toString());
+            inputInscricaoEstadual.setText(table.getValueAt(table.getSelectedRow(), 4).toString());
+            inputInscricaoMunicipal.setText(table.getValueAt(table.getSelectedRow(), 5).toString());
+        }
+    }//GEN-LAST:event_tableMouseClicked
 
     public static void main(String args[]) {
 
@@ -223,11 +366,17 @@ public class RegisterSuppliers extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addButton1;
-    private javax.swing.JButton checkButton1;
-    private javax.swing.JButton closeButton1;
-    private javax.swing.JButton delButton1;
-    private javax.swing.JButton editButton1;
+    private javax.swing.JButton addButton;
+    private javax.swing.JButton checkButton;
+    private javax.swing.JButton closeButton;
+    private javax.swing.JButton delButton;
+    private javax.swing.JButton editButton;
+    private javax.swing.JTextField inputCNPJ;
+    private javax.swing.JTextField inputEmail;
+    private javax.swing.JTextField inputInscricaoEstadual;
+    private javax.swing.JTextField inputInscricaoMunicipal;
+    private javax.swing.JTextField inputNome;
+    private javax.swing.JTextField inputTelefone;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -235,12 +384,6 @@ public class RegisterSuppliers extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

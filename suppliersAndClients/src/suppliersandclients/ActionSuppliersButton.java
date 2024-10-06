@@ -3,11 +3,11 @@ package suppliersandclients;
 public class ActionSuppliersButton extends ActionClientsButton {
     protected String cnpj, inscricaoEstadual, inscricaoMunicipal;
     
-    public void setCnpj(String cnpj) {
+    public void setCNPJ(String cnpj) {
         this.cnpj = cnpj;
     }
     
-    public String getCnpj() {
+    public String getCNPJ() {
         return cnpj;
     }
     

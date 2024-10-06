@@ -28,15 +28,15 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="addButton1" min="-2" pref="123" max="-2" attributes="0"/>
+                      <Component id="addButton" min="-2" pref="123" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                      <Component id="editButton1" min="-2" pref="123" max="-2" attributes="0"/>
+                      <Component id="editButton" min="-2" pref="123" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                      <Component id="delButton1" min="-2" pref="123" max="-2" attributes="0"/>
+                      <Component id="delButton" min="-2" pref="123" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                      <Component id="checkButton1" min="-2" pref="125" max="-2" attributes="0"/>
+                      <Component id="checkButton" min="-2" pref="125" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                      <Component id="closeButton1" min="-2" pref="123" max="-2" attributes="0"/>
+                      <Component id="closeButton" min="-2" pref="123" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -44,33 +44,33 @@
                           <Component id="jScrollPane1" min="-2" pref="1043" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextField1" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
+                                  <Component id="inputNome" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
                                   <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField2" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
+                                  <Component id="inputEmail" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField4" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
+                                  <Component id="inputTelefone" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField3" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
+                                  <Component id="inputCNPJ" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField6" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
+                                  <Component id="inputInscricaoEstadual" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField5" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
+                                  <Component id="inputInscricaoMunicipal" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -98,10 +98,10 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextField1" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="jTextField2" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="jTextField3" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="jTextField4" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="inputNome" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="inputEmail" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="inputCNPJ" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="inputTelefone" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -111,18 +111,18 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextField5" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="jTextField6" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="inputInscricaoMunicipal" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="inputInscricaoEstadual" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="addButton1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="editButton1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="delButton1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="checkButton1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="closeButton1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="addButton" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="editButton" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="delButton" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="checkButton" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="closeButton" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="34" max="32767" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="337" max="-2" attributes="0"/>
@@ -139,7 +139,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable1">
+        <Component class="javax.swing.JTable" name="table">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="6" rowCount="0">
@@ -189,54 +189,60 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tableMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="closeButton1">
+    <Component class="javax.swing.JButton" name="closeButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Fechar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="closeButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Telefone:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="inputNome">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="text" type="java.lang.String" value="CNPJ:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JTextField" name="inputEmail">
     </Component>
-    <Component class="javax.swing.JButton" name="editButton1">
+    <Component class="javax.swing.JButton" name="editButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Alterar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField3">
+    <Component class="javax.swing.JTextField" name="inputCNPJ">
     </Component>
-    <Component class="javax.swing.JButton" name="addButton1">
+    <Component class="javax.swing.JButton" name="addButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Incluir"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField4">
+    <Component class="javax.swing.JTextField" name="inputTelefone">
     </Component>
-    <Component class="javax.swing.JButton" name="delButton1">
+    <Component class="javax.swing.JButton" name="delButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Excluir"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -244,10 +250,13 @@
         <Property name="text" type="java.lang.String" value="Nome:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="checkButton1">
+    <Component class="javax.swing.JButton" name="checkButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Consultar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -264,9 +273,9 @@
         <Property name="text" type="java.lang.String" value="Inscri&#xe7;&#xe3;o Municipal:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField5">
+    <Component class="javax.swing.JTextField" name="inputInscricaoMunicipal">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField6">
+    <Component class="javax.swing.JTextField" name="inputInscricaoEstadual">
     </Component>
   </SubComponents>
 </Form>
