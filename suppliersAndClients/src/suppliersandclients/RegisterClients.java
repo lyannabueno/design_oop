@@ -192,19 +192,15 @@ public class RegisterClients extends javax.swing.JFrame {
         if (inputNome.getText().isEmpty() || inputEmail.getText().isEmpty() || inputTelefone.getText().isEmpty() || inputCPF.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos antes de cadastrá-los!");
         } else {
-            // Remover formatação para validação
             String telefoneSemFormatacao = inputTelefone.getText().replaceAll("[^0-9]", "");
             String cpfSemFormatacao = inputCPF.getText().replaceAll("[^0-9]", "");
 
-            // Validar tamanho
             if (telefoneSemFormatacao.length() != 11 || cpfSemFormatacao.length() != 11) {
                 JOptionPane.showMessageDialog(null, "Telefone ou CPF com tamanho inválido!");
             } else {
-                // Formatar novamente após a validação
-                String telefoneFormatado = formatPhoneNumber(telefoneSemFormatacao);
-                String cpfFormatado = formatCPF(cpfSemFormatacao);
+                String telefoneFormatado = DataFormatting.formatPhoneNumber(telefoneSemFormatacao);
+                String cpfFormatado = DataFormatting.formatCPF(cpfSemFormatacao);
 
-                // Adicionar à tabela
                 DefaultTableModel tableClients = (DefaultTableModel) table.getModel();
                 Object[] dados = {inputNome.getText(), inputEmail.getText(), telefoneFormatado, cpfFormatado};
                 tableClients.addRow(dados);
@@ -233,31 +229,26 @@ public class RegisterClients extends javax.swing.JFrame {
         } else if (inputNome.getText().isEmpty() || inputEmail.getText().isEmpty() || inputTelefone.getText().isEmpty() || inputCPF.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos antes de alterá-los!");
         } else {
-            // Remover formatação para validação
             String telefoneSemFormatacao = inputTelefone.getText().replaceAll("[^0-9]", "");
             String cpfSemFormatacao = inputCPF.getText().replaceAll("[^0-9]", "");
 
-            // Validar tamanho
             if (telefoneSemFormatacao.length() != 11 || cpfSemFormatacao.length() != 11) {
                 JOptionPane.showMessageDialog(null, "Telefone ou CPF com tamanho inválido!");
             } else {
-                // Formatar novamente após a validação
-                String telefoneFormatado = formatPhoneNumber(telefoneSemFormatacao);
-                String cpfFormatado = formatCPF(cpfSemFormatacao);
+                String telefoneFormatado = DataFormatting.formatPhoneNumber(telefoneSemFormatacao);
+                String cpfFormatado = DataFormatting.formatCPF(cpfSemFormatacao);
 
-                // Atualizar a tabela
                 table.setValueAt(inputNome.getText(), table.getSelectedRow(), 0);
                 table.setValueAt(inputEmail.getText(), table.getSelectedRow(), 1);
                 table.setValueAt(telefoneFormatado, table.getSelectedRow(), 2);
                 table.setValueAt(cpfFormatado, table.getSelectedRow(), 3);
 
-                // Limpar os campos de entrada
                 inputNome.setText("");
                 inputEmail.setText("");
                 inputTelefone.setText("");
                 inputCPF.setText("");
             }
-    }
+        }
     }//GEN-LAST:event_editButtonActionPerformed
 
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
@@ -281,8 +272,8 @@ public class RegisterClients extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Telefone ou CPF com tamanho inválido!");
             } else {
                 // Formatar apenas para exibição
-                telefone = formatPhoneNumber(telefone);
-                cpf = formatCPF(cpf);
+                telefone = DataFormatting.formatPhoneNumber(telefone);
+                cpf = DataFormatting.formatCPF(cpf);
 
                 actionClientsButton.setTelefone(telefone);
                 actionClientsButton.setCPF(cpf);
@@ -296,18 +287,6 @@ public class RegisterClients extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_checkButtonActionPerformed
 
-    private boolean isNumeric(String str) {
-        return str.matches("\\d+");
-    }
-
-    private String formatPhoneNumber(String phoneNumber) {
-        return phoneNumber.replaceAll("(\\d{2})(\\d{4})(\\d{4})", "($1) $2-$3");
-    }
-
-    private String formatCPF(String cpf) {
-        return cpf.replaceAll("(\\d{3})(\\d{3})(\\d{3})(\\d{2})", "$1.$2.$3-$4");
-    }
-    
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
