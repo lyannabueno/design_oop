@@ -22,14 +22,6 @@ public class RegisterClients extends javax.swing.JFrame {
         delButton = new javax.swing.JButton();
         checkButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        inputEmail = new javax.swing.JTextField();
-        inputCPF = new javax.swing.JTextField();
-        inputTelefone = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        inputNome = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,37 +90,13 @@ public class RegisterClients extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("CPF:");
-
-        jLabel1.setText("Nome:");
-
-        jLabel3.setText("Telefone:");
-
-        jLabel2.setText("Email:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(inputNome, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(inputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(inputTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(inputCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -145,21 +113,7 @@ public class RegisterClients extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(inputNome, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -177,76 +131,74 @@ public class RegisterClients extends javax.swing.JFrame {
     private void delButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delButtonActionPerformed
         if (table.getSelectedRow() != -1) {
             DefaultTableModel tableClients = (DefaultTableModel) table.getModel();
-            tableClients.removeRow((table.getSelectedRow()));
-            
-            inputNome.setText("");
-            inputEmail.setText("");
-            inputTelefone.setText("");
-            inputCPF.setText("");
+            tableClients.removeRow(table.getSelectedRow()); 
+
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione um produto para excluir!");
-        }        
+            JOptionPane.showMessageDialog(null, "Selecione um cliente para excluir!");
+        }     
     }//GEN-LAST:event_delButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        if (inputNome.getText().isEmpty() || inputEmail.getText().isEmpty() || inputTelefone.getText().isEmpty() || inputCPF.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos antes de cadastrá-los!");
-        } else {
-            String telefoneSemFormatacao = inputTelefone.getText().replaceAll("[^0-9]", "");
-            String cpfSemFormatacao = inputCPF.getText().replaceAll("[^0-9]", "");
-
-            if (telefoneSemFormatacao.length() != 11 || cpfSemFormatacao.length() != 11) {
-                JOptionPane.showMessageDialog(null, "Telefone ou CPF com tamanho inválido!");
-            } else {
-                String telefoneFormatado = DataFormatting.formatPhoneNumber(telefoneSemFormatacao);
-                String cpfFormatado = DataFormatting.formatCPF(cpfSemFormatacao);
-
-                DefaultTableModel tableClients = (DefaultTableModel) table.getModel();
-                Object[] dados = {inputNome.getText(), inputEmail.getText(), telefoneFormatado, cpfFormatado};
-                tableClients.addRow(dados);
-
-                inputNome.setText("");
-                inputEmail.setText("");
-                inputTelefone.setText("");
-                inputCPF.setText("");
-            }
+        Frame parent = (Frame) SwingUtilities.getWindowAncestor(this);
+        DataClients dataClients = new DataClients(parent, true);
+        
+        dataClients.setLocationRelativeTo(null);
+        dataClients.setVisible(true);
+        
+        ActionClientsButton newClient = dataClients.getClientData();
+        
+        if (newClient != null) {
+            DefaultTableModel tableClients = (DefaultTableModel) table.getModel();
+            Object[] dados = {
+                newClient.getNome(), 
+                newClient.getEmail(), 
+                newClient.getTelefone(), 
+                newClient.getCPF()
+            };
+            tableClients.addRow(dados);
         }
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
-        if (table.getSelectedRow() != -1) {
-            inputNome.setText(table.getValueAt(table.getSelectedRow(), 0).toString());
-            inputEmail.setText(table.getValueAt(table.getSelectedRow(), 1).toString());
-            inputTelefone.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
-            inputCPF.setText(table.getValueAt(table.getSelectedRow(), 3).toString());
+        if (evt.getClickCount() == 2 && table.getSelectedRow() != -1) {
+            ActionClientsButton selectedClient = new ActionClientsButton();
+            selectedClient.setNome(table.getValueAt(table.getSelectedRow(), 0).toString());
+            selectedClient.setEmail(table.getValueAt(table.getSelectedRow(), 1).toString());
+            selectedClient.setTelefone(table.getValueAt(table.getSelectedRow(), 2).toString());
+            selectedClient.setCPF(table.getValueAt(table.getSelectedRow(), 3).toString());
+
+            Frame parent = (Frame) SwingUtilities.getWindowAncestor(this);
+            DataClients dataClients = new DataClients(parent, true);
+            dataClients.exportarComponentesSomenteLeitura(selectedClient);
+            dataClients.setLocationRelativeTo(null);
+            dataClients.setVisible(true);
         }
     }//GEN-LAST:event_tableMouseClicked
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-        if (table.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(null, "Selecione um produto para alterar!");
-        } else if (inputNome.getText().isEmpty() || inputEmail.getText().isEmpty() || inputTelefone.getText().isEmpty() || inputCPF.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos antes de alterá-los!");
-        } else {
-            String telefoneSemFormatacao = inputTelefone.getText().replaceAll("[^0-9]", "");
-            String cpfSemFormatacao = inputCPF.getText().replaceAll("[^0-9]", "");
-
-            if (telefoneSemFormatacao.length() != 11 || cpfSemFormatacao.length() != 11) {
-                JOptionPane.showMessageDialog(null, "Telefone ou CPF com tamanho inválido!");
-            } else {
-                String telefoneFormatado = DataFormatting.formatPhoneNumber(telefoneSemFormatacao);
-                String cpfFormatado = DataFormatting.formatCPF(cpfSemFormatacao);
-
-                table.setValueAt(inputNome.getText(), table.getSelectedRow(), 0);
-                table.setValueAt(inputEmail.getText(), table.getSelectedRow(), 1);
-                table.setValueAt(telefoneFormatado, table.getSelectedRow(), 2);
-                table.setValueAt(cpfFormatado, table.getSelectedRow(), 3);
-
-                inputNome.setText("");
-                inputEmail.setText("");
-                inputTelefone.setText("");
-                inputCPF.setText("");
+        if (table.getSelectedRow() != -1) {
+            ActionClientsButton selectedClient = new ActionClientsButton();
+            selectedClient.setNome(table.getValueAt(table.getSelectedRow(), 0).toString());
+            selectedClient.setEmail(table.getValueAt(table.getSelectedRow(), 1).toString());
+            selectedClient.setTelefone(table.getValueAt(table.getSelectedRow(), 2).toString());
+            selectedClient.setCPF(table.getValueAt(table.getSelectedRow(), 3).toString());
+            
+            Frame parent = (Frame) SwingUtilities.getWindowAncestor(this);
+            DataClients dataClients = new DataClients(parent, true);
+            dataClients.exportarComponentes(selectedClient);
+            dataClients.setLocationRelativeTo(null);
+            dataClients.setVisible(true);
+            
+            ActionClientsButton updatedClient = dataClients.getClientData();
+            
+            if (updatedClient != null) {
+                table.setValueAt(updatedClient.getNome(), table.getSelectedRow(), 0);
+                table.setValueAt(updatedClient.getEmail(), table.getSelectedRow(), 1);
+                table.setValueAt(updatedClient.getTelefone(), table.getSelectedRow(), 2);
+                table.setValueAt(updatedClient.getCPF(), table.getSelectedRow(), 3);
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um cliente para alterar.");
         }
     }//GEN-LAST:event_editButtonActionPerformed
 
@@ -256,31 +208,19 @@ public class RegisterClients extends javax.swing.JFrame {
 
     private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
         if (table.getSelectedRow() != -1) {
-            Frame parent = (Frame) SwingUtilities.getWindowAncestor(table);
+            ActionClientsButton selectedClient = new ActionClientsButton();
+            selectedClient.setNome(table.getValueAt(table.getSelectedRow(), 0).toString());
+            selectedClient.setEmail(table.getValueAt(table.getSelectedRow(), 1).toString());
+            selectedClient.setTelefone(table.getValueAt(table.getSelectedRow(), 2).toString());
+            selectedClient.setCPF(table.getValueAt(table.getSelectedRow(), 3).toString());
+            
+            Frame parent = (Frame) SwingUtilities.getWindowAncestor(this);
             DataClients dataClients = new DataClients(parent, true);
-
-            ActionClientsButton actionClientsButton = new ActionClientsButton();
-            actionClientsButton.setNome(inputNome.getText());
-            actionClientsButton.setEmail(inputEmail.getText());
-
-            String telefone = inputTelefone.getText().replaceAll("[^0-9]", "");
-            String cpf = inputCPF.getText().replaceAll("[^0-9]", "");
-
-            if (telefone.length() != 11 || cpf.length() != 11) {
-                JOptionPane.showMessageDialog(null, "Telefone ou CPF com tamanho inválido!");
-            } else {
-                telefone = DataFormatting.formatPhoneNumber(telefone);
-                cpf = DataFormatting.formatCPF(cpf);
-
-                actionClientsButton.setTelefone(telefone);
-                actionClientsButton.setCPF(cpf);
-
-                dataClients.setLocationRelativeTo(null);
-                dataClients.exportarComponentes(actionClientsButton);
-                dataClients.setVisible(true);
-            }
+            dataClients.exportarComponentesSomenteLeitura(selectedClient); 
+            dataClients.setLocationRelativeTo(null);
+            dataClients.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione uma linha na tabela para consultar.");
+            JOptionPane.showMessageDialog(null, "Selecione um cliente para consultar.");
         }
     }//GEN-LAST:event_checkButtonActionPerformed
 
@@ -315,14 +255,6 @@ public class RegisterClients extends javax.swing.JFrame {
     private javax.swing.JButton closeButton;
     private javax.swing.JButton delButton;
     private javax.swing.JButton editButton;
-    private javax.swing.JTextField inputCPF;
-    private javax.swing.JTextField inputEmail;
-    private javax.swing.JTextField inputNome;
-    private javax.swing.JTextField inputTelefone;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables

@@ -1,6 +1,7 @@
 package suppliersandclients;
 
 public class DataSuppliers extends javax.swing.JDialog {
+    private ActionSuppliersButton suppliersData;
 
     public DataSuppliers(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -14,6 +15,20 @@ public class DataSuppliers extends javax.swing.JDialog {
         inputCNPJ.setText(actionSuppliersButton.getCNPJ());
         inputInscricaoMunicipal.setText(actionSuppliersButton.getInscricaoMunicipal());
         inputInscricaoEstadual.setText(actionSuppliersButton.getInscricaoEstadual());
+    }
+    
+     public void exportarComponentesSomenteLeitura(ActionSuppliersButton actionSuppliersButton) {
+        exportarComponentes(actionSuppliersButton);
+        inputNome.setEditable(false);
+        inputEmail.setEditable(false);
+        inputTelefone.setEditable(false);
+        inputCNPJ.setEditable(false);
+        inputInscricaoEstadual.setEditable(false);
+        inputInscricaoMunicipal.setEditable(false);
+    }
+    
+    public ActionSuppliersButton getSupplierData() {
+        return suppliersData;
     }
 
     @SuppressWarnings("unchecked")
@@ -48,18 +63,6 @@ public class DataSuppliers extends javax.swing.JDialog {
         jLabel5.setText("Inscrição estadual:");
 
         jLabel6.setText("Inscrição municipal:");
-
-        inputNome.setEditable(false);
-
-        inputTelefone.setEditable(false);
-
-        inputEmail.setEditable(false);
-
-        inputInscricaoMunicipal.setEditable(false);
-
-        inputCNPJ.setEditable(false);
-
-        inputInscricaoEstadual.setEditable(false);
 
         okButton.setText("OK");
         okButton.addActionListener(new java.awt.event.ActionListener() {
@@ -156,6 +159,14 @@ public class DataSuppliers extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+        suppliersData = new ActionSuppliersButton();
+        suppliersData.setNome(inputNome.getText());
+        suppliersData.setEmail(inputEmail.getText());
+        suppliersData.setTelefone(inputTelefone.getText());
+        suppliersData.setCNPJ(inputCNPJ.getText());
+        suppliersData.setInscricaoEstadual(inputInscricaoEstadual.getText());
+        suppliersData.setInscricaoMunicipal(inputInscricaoMunicipal.getText());
+        
         this.dispose();
     }//GEN-LAST:event_okButtonActionPerformed
 

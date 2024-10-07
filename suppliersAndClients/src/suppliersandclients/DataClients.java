@@ -2,6 +2,7 @@
 package suppliersandclients;
 
 public class DataClients extends javax.swing.JDialog {
+    private ActionClientsButton clientData;
 
     public DataClients(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -13,6 +14,18 @@ public class DataClients extends javax.swing.JDialog {
         inputEmail.setText(actionClientsButton.getEmail());
         inputTelefone.setText(actionClientsButton.getTelefone());
         inputCPF.setText(actionClientsButton.getCPF());
+    }
+    
+    public void exportarComponentesSomenteLeitura(ActionClientsButton actionClientsButton) {
+        exportarComponentes(actionClientsButton);
+        inputNome.setEditable(false);
+        inputEmail.setEditable(false);
+        inputTelefone.setEditable(false);
+        inputCPF.setEditable(false);
+    }
+    
+    public ActionClientsButton getClientData() {
+        return clientData;
     }
 
     @SuppressWarnings("unchecked")
@@ -41,15 +54,7 @@ public class DataClients extends javax.swing.JDialog {
             }
         });
 
-        inputNome.setEditable(false);
-
-        inputTelefone.setEditable(false);
-
-        inputEmail.setEditable(false);
-
         jLabel1.setText("Nome:");
-
-        inputCPF.setEditable(false);
 
         jLabel2.setText("Telefone:");
 
@@ -131,6 +136,12 @@ public class DataClients extends javax.swing.JDialog {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+        clientData = new ActionClientsButton();
+        clientData.setNome(inputNome.getText());
+        clientData.setEmail(inputEmail.getText());
+        clientData.setTelefone(inputTelefone.getText());
+        clientData.setCPF(inputCPF.getText());
+        
         this.dispose();
     }//GEN-LAST:event_okButtonActionPerformed
 
