@@ -24,4 +24,8 @@ public class DataFormatting {
     public static String formatInscricaoMunicipal(String inscricaoMunicipal) {
         return inscricaoMunicipal.replaceAll("(\\d{4})(\\d{3})(\\d{3})", "$1.$2.$3");
     }
+    
+    public static boolean containsOnlyNumbers(String str) {
+        return str.matches("\\d+");
+    }
 }

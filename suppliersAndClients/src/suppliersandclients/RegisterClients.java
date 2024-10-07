@@ -24,6 +24,7 @@ public class RegisterClients extends javax.swing.JFrame {
         closeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastro de Clientes");
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -46,11 +47,6 @@ public class RegisterClients extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
-            }
-        });
-        table.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(table);
@@ -148,32 +144,31 @@ public class RegisterClients extends javax.swing.JFrame {
         ActionClientsButton newClient = dataClients.getClientData();
         
         if (newClient != null) {
+            if (newClient.getNome().isEmpty() || newClient.getEmail().isEmpty() || newClient.getTelefone().length() != 11 || !DataFormatting.containsOnlyNumbers(newClient.getTelefone()) || newClient.getCPF().length() != 11 || !DataFormatting.containsOnlyNumbers(newClient.getCPF())) {
+                JOptionPane.showMessageDialog(this, "Por favor, verifique os seguintes campos:\n" +
+                        "- Nome\n" +
+                        "- E-mail\n" +
+                        "- Telefone (11 dígitos)\n" +
+                        "- CPF (11 dígitos)\n" ,
+                        "Campos Incompletos ou Inválidos", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            if (!DataFormatting.containsOnlyNumbers(newClient.getTelefone()) || !DataFormatting.containsOnlyNumbers(newClient.getCPF())) {
+                JOptionPane.showMessageDialog(this, "Os campos de telefone e CPF devem conter apenas números.");
+                return;
+            }
+
             DefaultTableModel tableClients = (DefaultTableModel) table.getModel();
             Object[] dados = {
                 newClient.getNome(), 
                 newClient.getEmail(), 
-                newClient.getTelefone(), 
-                newClient.getCPF()
+                DataFormatting.formatPhoneNumber(newClient.getTelefone()),
+                DataFormatting.formatCPF(newClient.getCPF())
             };
             tableClients.addRow(dados);
         }
     }//GEN-LAST:event_addButtonActionPerformed
-
-    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
-        if (evt.getClickCount() == 2 && table.getSelectedRow() != -1) {
-            ActionClientsButton selectedClient = new ActionClientsButton();
-            selectedClient.setNome(table.getValueAt(table.getSelectedRow(), 0).toString());
-            selectedClient.setEmail(table.getValueAt(table.getSelectedRow(), 1).toString());
-            selectedClient.setTelefone(table.getValueAt(table.getSelectedRow(), 2).toString());
-            selectedClient.setCPF(table.getValueAt(table.getSelectedRow(), 3).toString());
-
-            Frame parent = (Frame) SwingUtilities.getWindowAncestor(this);
-            DataClients dataClients = new DataClients(parent, true);
-            dataClients.exportarComponentesSomenteLeitura(selectedClient);
-            dataClients.setLocationRelativeTo(null);
-            dataClients.setVisible(true);
-        }
-    }//GEN-LAST:event_tableMouseClicked
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         if (table.getSelectedRow() != -1) {
@@ -194,8 +189,8 @@ public class RegisterClients extends javax.swing.JFrame {
             if (updatedClient != null) {
                 table.setValueAt(updatedClient.getNome(), table.getSelectedRow(), 0);
                 table.setValueAt(updatedClient.getEmail(), table.getSelectedRow(), 1);
-                table.setValueAt(updatedClient.getTelefone(), table.getSelectedRow(), 2);
-                table.setValueAt(updatedClient.getCPF(), table.getSelectedRow(), 3);
+                table.setValueAt(DataFormatting.formatPhoneNumber(updatedClient.getTelefone()), table.getSelectedRow(), 2);
+            table.setValueAt(DataFormatting.formatCPF(updatedClient.getCPF()), table.getSelectedRow(), 3);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um cliente para alterar.");

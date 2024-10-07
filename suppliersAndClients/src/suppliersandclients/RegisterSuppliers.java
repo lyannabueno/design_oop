@@ -24,6 +24,7 @@ public class RegisterSuppliers extends javax.swing.JFrame {
         checkButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastro de Fornecedores");
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -46,11 +47,6 @@ public class RegisterSuppliers extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
-            }
-        });
-        table.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(table);
@@ -160,10 +156,10 @@ public class RegisterSuppliers extends javax.swing.JFrame {
             if (updatedSupplier != null) {
                 table.setValueAt(updatedSupplier.getNome(), table.getSelectedRow(), 0);
                 table.setValueAt(updatedSupplier.getEmail(), table.getSelectedRow(), 1);
-                table.setValueAt(updatedSupplier.getTelefone(), table.getSelectedRow(), 2);
-                table.setValueAt(updatedSupplier.getCNPJ(), table.getSelectedRow(), 3);
-                table.setValueAt(updatedSupplier.getInscricaoEstadual(), table.getSelectedRow(), 4);
-                table.setValueAt(updatedSupplier.getInscricaoMunicipal(), table.getSelectedRow(), 5);
+                table.setValueAt(DataFormatting.formatPhoneNumber(updatedSupplier.getTelefone()), table.getSelectedRow(), 2);
+                table.setValueAt(DataFormatting.formatCNPJ(updatedSupplier.getCNPJ()), table.getSelectedRow(), 3);
+                table.setValueAt(DataFormatting.formatInscricaoEstadual(updatedSupplier.getInscricaoEstadual()), table.getSelectedRow(), 4);
+                table.setValueAt(DataFormatting.formatInscricaoMunicipal(updatedSupplier.getInscricaoMunicipal()), table.getSelectedRow(), 5);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um cliente para alterar.");
@@ -180,14 +176,31 @@ public class RegisterSuppliers extends javax.swing.JFrame {
         ActionSuppliersButton newSuppliers = dataSuppliers.getSupplierData();
         
         if (newSuppliers != null) {
+            if (newSuppliers.getNome().isEmpty() || newSuppliers.getEmail().isEmpty() || newSuppliers.getTelefone().length() != 11 || !DataFormatting.containsOnlyNumbers(newSuppliers.getTelefone()) || newSuppliers.getCNPJ().length() != 14 || !DataFormatting.containsOnlyNumbers(newSuppliers.getCNPJ()) || newSuppliers.getInscricaoEstadual().isEmpty() || newSuppliers.getInscricaoMunicipal().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor, verifique os seguintes campos:\n" +
+                        "- Nome\n" +
+                        "- E-mail\n" +
+                        "- Telefone (11 dígitos)\n" +
+                        "- CNPJ (14 dígitos)\n" +
+                        "- Inscrição Estadual (verificar tamanho específico)\n" +
+                        "- Inscrição Municipal (verificar tamanho específico)",
+                        "Campos Incompletos ou Inválidos", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            if (!DataFormatting.containsOnlyNumbers(newSuppliers.getTelefone()) || !DataFormatting.containsOnlyNumbers(newSuppliers.getCNPJ()) || !DataFormatting.containsOnlyNumbers(newSuppliers.getInscricaoEstadual()) || !DataFormatting.containsOnlyNumbers(newSuppliers.getInscricaoMunicipal())) {
+                JOptionPane.showMessageDialog(this, "Os campos de telefone, CNPJ, inscrição estadual e municipal devem conter apenas números.");
+                return;
+            }
+            
             DefaultTableModel tableSuppliers = (DefaultTableModel) table.getModel();
             Object[] dados = {
                 newSuppliers.getNome(), 
                 newSuppliers.getEmail(), 
-                newSuppliers.getTelefone(), 
-                newSuppliers.getCNPJ(),
-                newSuppliers.getInscricaoEstadual(),
-                newSuppliers.getInscricaoMunicipal()
+                DataFormatting.formatPhoneNumber(newSuppliers.getTelefone()),
+                DataFormatting.formatCNPJ(newSuppliers.getCNPJ()),
+                DataFormatting.formatInscricaoEstadual(newSuppliers.getInscricaoEstadual()),
+                DataFormatting.formatInscricaoMunicipal(newSuppliers.getInscricaoMunicipal())
             };
             tableSuppliers.addRow(dados);
         }
@@ -216,24 +229,6 @@ public class RegisterSuppliers extends javax.swing.JFrame {
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_closeButtonActionPerformed
-
-    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
-        if (evt.getClickCount() == 2 && table.getSelectedRow() != -1) {
-            ActionSuppliersButton selectedSupplier = new ActionSuppliersButton();
-            selectedSupplier.setNome(table.getValueAt(table.getSelectedRow(), 0).toString());
-            selectedSupplier.setEmail(table.getValueAt(table.getSelectedRow(), 1).toString());
-            selectedSupplier.setTelefone(table.getValueAt(table.getSelectedRow(), 2).toString());
-            selectedSupplier.setCNPJ(table.getValueAt(table.getSelectedRow(), 3).toString());
-            selectedSupplier.setInscricaoEstadual(table.getValueAt(table.getSelectedRow(), 4).toString());
-            selectedSupplier.setInscricaoMunicipal(table.getValueAt(table.getSelectedRow(), 5).toString());
-
-            Frame parent = (Frame) SwingUtilities.getWindowAncestor(this);
-            DataSuppliers dataSuppliers = new DataSuppliers(parent, true);
-            dataSuppliers.exportarComponentesSomenteLeitura(selectedSupplier); 
-            dataSuppliers.setLocationRelativeTo(null);
-            dataSuppliers.setVisible(true);
-        }
-    }//GEN-LAST:event_tableMouseClicked
 
     public static void main(String args[]) {
 
