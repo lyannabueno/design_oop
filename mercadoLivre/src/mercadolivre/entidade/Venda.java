@@ -2,13 +2,14 @@ package mercadolivre.entidade;
 
 import java.sql.Time;
 import java.util.Date;
+import java.util.ArrayList;
 
 public class Venda {
     private int id, idCliente;
     private Date data;
     private Time hora;
     private Cliente cliente;
-    private ItemVenda itemVenda;
+    ArrayList<ItemVenda> itemVenda;
     
     public int obterId() {
         return id;
@@ -52,7 +53,7 @@ public class Venda {
     
     
     public void incluirItem(ItemVenda itemVenda) {
-        this.itemVenda = itemVenda;
+        this.itemVenda.add(itemVenda);
     }
     
 }
