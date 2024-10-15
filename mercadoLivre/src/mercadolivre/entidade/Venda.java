@@ -9,8 +9,13 @@ public class Venda {
     private Date data;
     private Time hora;
     private Cliente cliente;
-    ArrayList<ItemVenda> itemVenda;
     
+    ArrayList<ItemVenda> itensVenda;
+    
+    public Venda() {
+        itensVenda = new ArrayList<>();
+    }
+     
     public int obterId() {
         return id;
     }
@@ -53,7 +58,7 @@ public class Venda {
     
     
     public void incluirItem(ItemVenda itemVenda) {
-        this.itemVenda.add(itemVenda);
+        this.itensVenda.add(itemVenda);
     }
     
 }
