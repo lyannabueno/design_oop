@@ -1,14 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mercadolivre.controladores;
 
-/**
- *
- * @author 06006399
- */
+import java.util.ArrayList;
+import mercadolivre.entidade.Venda;
+
 public class ControladorVenda {
+    ArrayList<Venda> vendas;
     
+    public ControladorVenda() {
+        vendas = new ArrayList<>();
+    }
+    
+    public void incluir(Venda venda) {
+        this.vendas.add(venda);
+    }
 }
