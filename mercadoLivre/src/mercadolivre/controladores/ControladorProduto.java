@@ -4,9 +4,19 @@ import java.util.ArrayList;
 import mercadolivre.entidade.Produto;
 
 public class ControladorProduto {
-    ArrayList<Produto> produto;
+    ArrayList<Produto> produtos;
     
-    public void localizar(int id) {
+    public ControladorProduto() {
+        produtos = new ArrayList<>();  // construtor para inicializar o Produto
+    }
+    
+    public Produto localizar(int id) {
+        for (Produto produto : produtos)  { // for each (tipo do elemento elemento : coleção)
+            if (produto.obterId() == id) {
+                return produto;
+            }
+        }
         
+        return null;
     }
 }
