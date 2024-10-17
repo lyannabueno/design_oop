@@ -10,10 +10,10 @@ public class Venda {
     private Time hora;
     private Cliente cliente;
     
-    ArrayList<ItemVenda> itensVenda;
+    private ArrayList<ItemVenda> itens;
     
     public Venda() {
-        itensVenda = new ArrayList<>();
+        itens = new ArrayList<>();
     }
      
     public int obterId() {
@@ -58,7 +58,7 @@ public class Venda {
     
     
     public void incluirItem(ItemVenda itemVenda) {
-        this.itensVenda.add(itemVenda);
+        this.itens.add(itemVenda);
     }
     
 }
