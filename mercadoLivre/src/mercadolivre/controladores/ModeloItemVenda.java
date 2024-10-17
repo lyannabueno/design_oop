@@ -59,19 +59,20 @@ public class ModeloItemVenda extends AbstractTableModel {
     @Override
     public void setValueAt(Object aValue, int row, int column){
     ItemVenda itemVenda = itens.get(row);
+    ItemVenda itemNovo = (ItemVenda)aValue;
 
     switch(column){
         case COLUNA_NUMERO:
-            itemVenda.alterarNumero(Integer.parseInt(aValue.toString()));
+            itemVenda.alterarNumero(itemNovo.obterNumero());
             break;
         case COLUNA_IDPRODUTO:
-            itemVenda.alterarProduto(aValue.toString());
+            itemVenda.alterarProduto(itemNovo.obterProduto());
             break;
         case COLUNA_QUANTIDADE:
-            itemVenda.alterarQuantidade(Integer.parseInt(aValue.toString()));
+            itemVenda.alterarQuantidade(itemNovo.obterQuantidade());
             break;
         case COLUNA_PRECO:
-            itemVenda.alterarPreco(Float.parseFloat(aValue.toString()));
+            itemVenda.alterarPreco(itemNovo.obterPreco());
             break;
         }
     }
