@@ -1,9 +1,14 @@
 package controladores;
 
-public class JanelaPrincipal extends javax.swing.JFrame {
+import entidade.Sistema;
 
-    public JanelaPrincipal() {
+public class JanelaPrincipal extends javax.swing.JFrame {
+    
+    private Sistema sistema;
+
+    public JanelaPrincipal(Sistema sistema) {
         initComponents();
+        this.sistema = sistema;
     }
 
     @SuppressWarnings("unchecked")
@@ -89,7 +94,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAlugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAlugarActionPerformed
-        JanelaAluguel buttonAluguel = new JanelaAluguel();
+        JanelaAluguel buttonAluguel = new JanelaAluguel(sistema);
         buttonAluguel.setLocationRelativeTo(null);
         buttonAluguel.setVisible(true);
     }//GEN-LAST:event_buttonAlugarActionPerformed
@@ -124,7 +129,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JanelaPrincipal().setVisible(true);
+                Sistema sistema = new Sistema();
+                new JanelaPrincipal(sistema).setVisible(true);
             }
         });
     }
