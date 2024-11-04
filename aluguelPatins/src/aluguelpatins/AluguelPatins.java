@@ -8,7 +8,6 @@ import entidade.Sistema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import controladores.JanelaPrincipal;
 import java.util.InputMismatchException;
 
@@ -25,6 +24,7 @@ public class AluguelPatins {
         String inputIdPatins; // tratada como string, porque o usuário pode digitar o id ou a palavra 'sair'
         int idPatins, numeroCalcado, quantidade;
         String estado;
+        float valor;
         
         Scanner entrada = new Scanner(System.in);
         List<Integer> idsCadastrados = new ArrayList<>(); // lista para armazenar os IDs cadastrados
@@ -77,9 +77,10 @@ public class AluguelPatins {
                 numeroCalcado = solicitarNumeroCalçado(entrada);
                 estado = solicitarEstado(entrada);
                 quantidade = solicitarQuantidade(entrada, estado);
+                valor = solicitarValorTotal(entrada);
 
                 if (quantidade > 0) {
-                    atendente.registrarPatins(idPatins, numeroCalcado, estado, sistema, quantidade);
+                    atendente.registrarPatins(idPatins, numeroCalcado, estado, quantidade, valor, sistema);
                     System.out.println("\nPatins registrado com sucesso!");
                 } else {
                     System.out.println("\nA quantidade deve ser maior que zero.\n");
@@ -95,7 +96,7 @@ public class AluguelPatins {
         System.out.println("\nEncerrando o sistema de registro de patins.");
         entrada.close();
         
-        JanelaPrincipal janela = new JanelaPrincipal();
+        JanelaPrincipal janela = new JanelaPrincipal(sistema);
         janela.setLocationRelativeTo(null);
         janela.setVisible(true);
     }
@@ -113,10 +114,12 @@ public class AluguelPatins {
         int numeroCalcado = solicitarNumeroCalçado(entrada);
         String estado = solicitarEstado(entrada);
         int quantidade = solicitarQuantidade(entrada, estado);
+        float valor = solicitarValorTotal(entrada);
 
         patinsParaEditar.setNumeroCalcado(numeroCalcado);
         patinsParaEditar.setEstado(estado);
         patinsParaEditar.setQuantidade(quantidade);
+        patinsParaEditar.setValorTotal(valor);
     }
 
     private static int solicitarNumeroCalçado(Scanner entrada) {
@@ -136,6 +139,7 @@ public class AluguelPatins {
 
     private static String solicitarEstado(Scanner entrada) {
         String estado;
+        
         while (true) {
             System.out.print("Estado (disponível/indisponível/danificado): ");
             estado = entrada.next();
@@ -168,11 +172,32 @@ public class AluguelPatins {
             }
         }
     }
+    
+    private static float solicitarValorTotal(Scanner entrada) {
+        float valor;
+        
+        while (true) {
+            try {
+                System.out.print("Valor: "); 
+                valor = entrada.nextFloat();
+                
+                if (valor <= 0) {
+                    System.out.println("\nO valor do patins não pode ser menor ou igual a zero!\n");
+                } else {
+                    return valor; 
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Valor inválido. Por favor, digite um número válido.\n");
+                entrada.nextLine();
+            }
+        }
+    }
 
     private static void exibirPatinsDisponiveis(Sistema sistema) {
         System.out.println("\nPatins disponíveis:");
         for (Patins patins : sistema.getPatinsDisponiveis()) {
-            System.out.println("\nID: " + patins.getIdPatins() + ", Número: " + patins.getNumeroCalcado() + ", Estado: " + patins.getEstado() + ", Quantidade: " + patins.getQuantidade());
+            System.out.println("\nID: " + patins.getIdPatins() + ", Número: " + patins.getNumeroCalcado() + ", Estado: " + patins.getEstado() + ", Quantidade: " + patins.getQuantidade() + ", Valor: " + patins.getValorTotal());
         }
     }
 }
+       
