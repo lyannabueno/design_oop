@@ -29,7 +29,7 @@ public class Atendente {
         return null;
     }
     
-    public void registrarPatins(int idPatins, int numeroCalcado, String estado, Sistema sistema, int quantidade) {
+    public void registrarPatins(int idPatins, int numeroCalcado, String estado, int quantidade, float valorTotal, Sistema sistema) {
         boolean found = false;
         
         for (Patins patins : sistema.getPatinsDisponiveis()) {
@@ -42,7 +42,7 @@ public class Atendente {
         }
         
         if (!found) {
-            Patins novoPatins = new Patins(idPatins, estado, numeroCalcado, quantidade);
+            Patins novoPatins = new Patins(idPatins, estado, numeroCalcado, quantidade, valorTotal);
             sistema.getPatinsDisponiveis().add(novoPatins);
         }
     }
