@@ -38,4 +38,17 @@ public class Sistema {
         relatorio.setTotalRecebido(total);
         return relatorio;
     }
+
+    public boolean patinsCadastrados(int idPatins) {
+        return patinsDisponiveis.stream().anyMatch(p -> p.getIdPatins() == idPatins);
+    }
+    
+    public Patins getPatinsById(int idPatins) {
+        for (Patins patins : this.patinsDisponiveis) { // considerando que 'patinsDisponiveis' é a lista de patins disponíveis
+            if (patins.getIdPatins() == idPatins) {
+                return patins;
+            }
+        }
+        return null;
+    }
 }
