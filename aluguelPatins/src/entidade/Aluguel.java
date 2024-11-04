@@ -79,7 +79,7 @@ public class Aluguel {
         return valorTotal;
     }
     
-    public void setValorTotal() {
+    public void setValorTotal(float valorTotal) {
         this.valorTotal = valorTotal;
     }
     
