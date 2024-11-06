@@ -1,9 +1,20 @@
 package controladores;
 
+import entidade.DataFormart;
+import entidade.Patins;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 public class JanelaDevolução extends javax.swing.JFrame {
+
 
     public JanelaDevolução() {
         initComponents();
+        tablePatinsDevolucao = new JTable();
+        DataFormart.configurarMascaras(tablePatinsDevolucao);
+        DataFormart.configurarEstado(tablePatinsDevolucao);
+        DataFormart.configurarPagamento(tablePatinsDevolucao);
     }
 
     @SuppressWarnings("unchecked")
@@ -14,7 +25,7 @@ public class JanelaDevolução extends javax.swing.JFrame {
         buttonCancelar2 = new javax.swing.JButton();
         buttonPagar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tablePatinsAluguel2 = new javax.swing.JTable();
+        tablePatinsDevolucao = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
@@ -34,7 +45,7 @@ public class JanelaDevolução extends javax.swing.JFrame {
             }
         });
 
-        tablePatinsAluguel2.setModel(new javax.swing.table.DefaultTableModel(
+        tablePatinsDevolucao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null}
             },
@@ -50,7 +61,7 @@ public class JanelaDevolução extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(tablePatinsAluguel2);
+        jScrollPane4.setViewportView(tablePatinsDevolucao);
 
         jLabel5.setText("Obs: antes de pagar a devolução, clique na linha (não coluna)");
 
@@ -113,7 +124,7 @@ public class JanelaDevolução extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
     private void buttonPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPagarActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_buttonPagarActionPerformed
 
     public static void main(String args[]) {
@@ -149,6 +160,6 @@ public class JanelaDevolução extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable tablePatinsAluguel2;
+    private javax.swing.JTable tablePatinsDevolucao;
     // End of variables declaration//GEN-END:variables
 }
