@@ -14,6 +14,15 @@ import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 
+// métodos importados para salvar as infromações como CPF e telefone digitadas na tabela
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class JanelaAluguel extends javax.swing.JFrame {
 
     private Sistema sistema;
@@ -178,7 +187,7 @@ public class JanelaAluguel extends javax.swing.JFrame {
                 }
 
                 JOptionPane.showMessageDialog(this, "Aluguel confirmado para o Patins ID: " + idPatins, "Confirmação", JOptionPane.INFORMATION_MESSAGE);
-                
+                                
                 DefaultTableModel modeloAntigo = (DefaultTableModel) tablePatinsAluguel.getModel();
                 int rowCount = modeloAntigo.getRowCount();
                 int columnCount = modeloAntigo.getColumnCount();
@@ -203,19 +212,13 @@ public class JanelaAluguel extends javax.swing.JFrame {
                 tablePatinsAluguel.setModel(tableModel);
 
                 linhasConfirmadas.add(linhaSelecionada);
+                
+                salvarDadosEmArquivo(idPatins, numeroCalcado, estado, cpfCliente, telefoneCliente, valorTotal);
 
                 tableModel.addRow(new Object[tableModel.getColumnCount()]); // adiciona uma linha vazia após cada registro
             } else {
                 JOptionPane.showMessageDialog(this, "Esta linha já foi confirmada. Selecione outra linha para alugar.", "Erro", JOptionPane.ERROR_MESSAGE);
             }
-        } else {
-            for (int col = 0; col < tableModel.getColumnCount(); col++) {
-                if (tableModel.getValueAt(linhaSelecionada, col) == null || tableModel.getValueAt(linhaSelecionada, col).toString().trim().isEmpty()) {
-                    JOptionPane.showMessageDialog(this, "A linha selecionada contém campos vazios. Preencha todos os campos antes de confirmar.", "Erro", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-            }
-                    
         }
     }//GEN-LAST:event_buttonConfirmarActionPerformed
 
@@ -246,6 +249,34 @@ public class JanelaAluguel extends javax.swing.JFrame {
         estadoComboBox.addItem("indisponível");
         estadoComboBox.addItem("danificado");
         tablePatinsAluguel.getColumnModel().getColumn(2).setCellEditor(new DefaultCellEditor(estadoComboBox));
+    }
+    
+    public String salvarDadosEmArquivo(int idPatins, int numeroCalcado, String estado, String cpfCliente, String telefoneCliente, float valorTotal) {
+        FileWriter fw = null;
+        
+        try {
+            fw = new FileWriter("AluguelClientes.txt");
+            PrintWriter pw = new PrintWriter(fw);
+            pw.println("ID: " + idPatins);
+            pw.println("Número Calçado: " + numeroCalcado);
+            pw.println("Estado: " + estado);
+            pw.println("CPF: " + cpfCliente);
+            pw.println("Telefone: " + telefoneCliente);
+            pw.println("Valor total: " + valorTotal);
+            pw.flush(); // envia os dados
+            pw.close();
+            fw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(JanelaAluguel.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                fw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(JanelaAluguel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return null; 
     }
     
     public static void main(String args[]) {
