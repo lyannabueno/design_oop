@@ -1,27 +1,22 @@
 package controladores;
 
-import java.text.ParseException;
-import javax.swing.DefaultCellEditor;
-import javax.swing.JFormattedTextField;
+import entidade.DataFormart;
 import javax.swing.JOptionPane;
-import javax.swing.text.MaskFormatter;
 
 import entidade.Sistema;
 import entidade.Patins;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 
 // métodos importados para salvar as infromações como CPF e telefone digitadas na tabela
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
 
 public class JanelaAluguel extends javax.swing.JFrame {
 
@@ -34,9 +29,10 @@ public class JanelaAluguel extends javax.swing.JFrame {
         this.sistema = sistema;
         tableModel = (DefaultTableModel) tablePatinsAluguel.getModel();
         linhasConfirmadas = new ArrayList<>();
-        configurarMascaras();
-        configurarPagamento();
-        configurarEstado();
+        tablePatinsAluguel = new JTable();
+        DataFormart.configurarMascaras(tablePatinsAluguel);
+        DataFormart.configurarEstado(tablePatinsAluguel);
+        DataFormart.configurarPagamento(tablePatinsAluguel);
     }
 
     @SuppressWarnings("unchecked")
@@ -221,36 +217,7 @@ public class JanelaAluguel extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_buttonConfirmarActionPerformed
-
-    private void configurarMascaras() {
-        try {
-            MaskFormatter cpfMask = new MaskFormatter("###.###.###-##");
-            MaskFormatter telefoneMask = new MaskFormatter("(##) #####-####");
-
-            tablePatinsAluguel.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor(new JFormattedTextField(cpfMask)));
-            tablePatinsAluguel.getColumnModel().getColumn(4).setCellEditor(new DefaultCellEditor(new JFormattedTextField(telefoneMask)));
-        } catch (ParseException e) { // exceção para caso a máscara seja aplicada de forma errada
-            e.printStackTrace(); // mostra o caminho de execução do programa no momento em que a exceção ocorreu, ajudando a identificar onde o erro aconteceu no código
-        }
-    }
-    
-    private void configurarPagamento() {
-        JComboBox<String> pagamentoComboBox = new JComboBox<>();
-        pagamentoComboBox.addItem("crédito");
-        pagamentoComboBox.addItem("débito");
-        pagamentoComboBox.addItem("pix");
-        pagamentoComboBox.addItem("boleto");
-        tablePatinsAluguel.getColumnModel().getColumn(5).setCellEditor(new DefaultCellEditor(pagamentoComboBox));
-    }
-    
-    private void configurarEstado() {
-        JComboBox<String> estadoComboBox = new JComboBox<>();
-        estadoComboBox.addItem("disponível");
-        estadoComboBox.addItem("indisponível");
-        estadoComboBox.addItem("danificado");
-        tablePatinsAluguel.getColumnModel().getColumn(2).setCellEditor(new DefaultCellEditor(estadoComboBox));
-    }
-    
+  
     public String salvarDadosEmArquivo(int idPatins, int numeroCalcado, String estado, String cpfCliente, String telefoneCliente, float valorTotal) {
         FileWriter fw = null;
         
