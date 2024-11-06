@@ -1,7 +1,6 @@
 package entidade;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Sistema {
     private ArrayList<Patins> patinsDisponiveis = new ArrayList<>();
