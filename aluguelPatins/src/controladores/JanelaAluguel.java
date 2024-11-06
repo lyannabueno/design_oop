@@ -178,6 +178,29 @@ public class JanelaAluguel extends javax.swing.JFrame {
                 }
 
                 JOptionPane.showMessageDialog(this, "Aluguel confirmado para o Patins ID: " + idPatins, "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+                
+                DefaultTableModel modeloAntigo = (DefaultTableModel) tablePatinsAluguel.getModel();
+                int rowCount = modeloAntigo.getRowCount();
+                int columnCount = modeloAntigo.getColumnCount();
+
+                // armazena os dados atuais
+                Object[][] data = new Object[rowCount][columnCount];
+                for (int i = 0; i < rowCount; i++) {
+                    for (int j = 0; j < columnCount; j++) {
+                        data[i][j] = modeloAntigo.getValueAt(i, j);
+                    }
+                }
+                
+                String[] columnNames = { "ID", "Número", "Estado", "CPF", "Telefone", "Pagamento", "Valor" };
+                
+                DefaultTableModel tableModel = new DefaultTableModel(data, columnNames) {
+                    @Override
+                    public boolean isCellEditable(int row, int column) {
+                        return !linhasConfirmadas.contains(row);  // torna a linha não editável se estiver confirmada
+                    }
+                };
+                
+                tablePatinsAluguel.setModel(tableModel);
 
                 linhasConfirmadas.add(linhaSelecionada);
 
@@ -185,6 +208,14 @@ public class JanelaAluguel extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Esta linha já foi confirmada. Selecione outra linha para alugar.", "Erro", JOptionPane.ERROR_MESSAGE);
             }
+        } else {
+            for (int col = 0; col < tableModel.getColumnCount(); col++) {
+                if (tableModel.getValueAt(linhaSelecionada, col) == null || tableModel.getValueAt(linhaSelecionada, col).toString().trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "A linha selecionada contém campos vazios. Preencha todos os campos antes de confirmar.", "Erro", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+                    
         }
     }//GEN-LAST:event_buttonConfirmarActionPerformed
 
