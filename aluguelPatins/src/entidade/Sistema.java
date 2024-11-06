@@ -1,10 +1,11 @@
 package entidade;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Sistema {
-    private ArrayList<Patins> patinsDisponiveis = new ArrayList<>();;
-    private ArrayList<Aluguel> alugueis = new ArrayList<>();;
+    private ArrayList<Patins> patinsDisponiveis = new ArrayList<>();
+    private ArrayList<Aluguel> alugueis = new ArrayList<>();
     
     public ArrayList<Patins> getPatinsDisponiveis() {
         return patinsDisponiveis;
