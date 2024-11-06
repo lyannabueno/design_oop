@@ -28,12 +28,14 @@ public class JanelaDevolução extends javax.swing.JFrame {
         });
 
         buttonPagar.setText("Pagar");
+        buttonPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPagarActionPerformed(evt);
+            }
+        });
 
         tablePatinsAluguel2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null}
             },
             new String [] {
@@ -110,6 +112,10 @@ public class JanelaDevolução extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
+    private void buttonPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPagarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonPagarActionPerformed
+
     public static void main(String args[]) {
         
         try {
@@ -137,26 +143,12 @@ public class JanelaDevolução extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonCancelar;
-    private javax.swing.JButton buttonCancelar1;
     private javax.swing.JButton buttonCancelar2;
-    private javax.swing.JButton buttonConfirmar;
-    private javax.swing.JButton buttonConfirmar1;
     private javax.swing.JButton buttonPagar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable tablePatinsAluguel;
-    private javax.swing.JTable tablePatinsAluguel1;
     private javax.swing.JTable tablePatinsAluguel2;
     // End of variables declaration//GEN-END:variables
 }
