@@ -1,13 +1,16 @@
 package controladores;
 
 import entidade.DataFormart;
-import entidade.Patins;
-import javax.swing.JOptionPane;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 public class JanelaDevolução extends javax.swing.JFrame {
-
 
     public JanelaDevolução() {
         initComponents();
@@ -124,7 +127,27 @@ public class JanelaDevolução extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
     private void buttonPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPagarActionPerformed
-       
+        FileReader fr = null;
+        BufferedReader br = null;
+        try {
+            File arquivo = new File("AluguelClientes.txt");
+            fr = new FileReader(arquivo);
+            br = new BufferedReader(br);
+            
+            String linha = br.readLine();
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(JanelaDevolução.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(JanelaDevolução.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                fr.close();
+            } catch (IOException ex) {
+                Logger.getLogger(JanelaDevolução.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+           
     }//GEN-LAST:event_buttonPagarActionPerformed
 
     public static void main(String args[]) {
